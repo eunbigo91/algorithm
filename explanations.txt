@@ -1,0 +1,12 @@
+Question 1
+: Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
+
+Answer 1
+: First, I returned all cases that I don’t have to compare, removed the spaces, and made letters lowercase. I used a dictionary named tdict for t. I filled tdict that the letters in t are indices and the count of the letters are the entries. I created a dictionary named s_dict for each substring in s of length of t. Then I returned True if one of the s_dict and tdict are equal, or False.
+Length of s : n
+Length of t : m (can not be bigger than n)
+Efficiency(time)
+question1 function runs 6 lines before the first for loop. O(6). Then it runs for loop which has length of t(m). O(6+m). Each substring in s which has length of s - length of t + 1 runs next for loop which has 2 lines and another for loop for length of t. O(6+m+(n-m)(2+m+1)) = O(6+3n+nm-2m-m^2). There is one more line to return. O(7+3n+nm-2m-m^2). when m=1, O(4n+4) = O(n). when m=n/2, O(n^2/4+2n+7) = O(n^2). when m=n, O(n+7) = O(n). So, worst case scenario is O(n^2)
+
+Efficiency(space)
+ - I used one variable named sub_str_s, and two dictionaries. Length of tdict is m, and length of s_dict is n-m. So, O(1+m+n-m) = O(n)
