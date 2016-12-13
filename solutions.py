@@ -6,6 +6,7 @@ def question1(s, t):
         return True
     # Return False if s and t are not strings
     if type(s) != str or type(t) != str:
+        print "s or/and t are not strings"
         return False
 
     # Remove the spaces and make letters lowercase.
@@ -14,6 +15,7 @@ def question1(s, t):
 
     # Return False if s is empty or length of s is shorter than length of t
     if len(s) < len(t) or len(s)==0:
+        print "s is empty or the length of s is shorter than the length of t"
         return False
 
     tdict = {}
@@ -43,4 +45,34 @@ print question1(123, 1435)
 print question1('My Name .Is Eunbi Go','mies.')
 # False
 print question1('udacity', 'aDyQ')
+print " "
 
+# Question 2
+
+def getlongestpalindrome(s, l, r):
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            l -= 1; r += 1
+        return s[l+1 : r]
+    
+def question2(a):
+    a = a.replace(' ', '').lower()
+    if len(a) == 0:
+        print "Please put a string"
+        return None
+    palindrome = ''
+    for i in range(len(a)):
+        len1 = len(getlongestpalindrome(a, i, i))
+        if len1 > len(palindrome):
+            palindrome = getlongestpalindrome(a, i, i)
+            len2 = len(getlongestpalindrome(a, i, i + 1))
+        if len2 > len(palindrome):
+            palindrome = getlongestpalindrome(a, i, i + 1)
+    return palindrome
+
+
+print "Question 2"
+print question2('           ')
+print question2('mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm')
+print question2('This has no palindromes over two chars!')
+print question2('This has three character palindrome!')
+print " "
