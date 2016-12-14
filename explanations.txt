@@ -2,7 +2,8 @@ Question 1
 : Given two strings s and t, determine whether some anagram of t is a substring of s. For example: if s = "udacity" and t = "ad", then the function returns True. Your function definition should look like: question1(s, t) and return a boolean True or False.
 
 Answer 1
-: First, I returned all cases that I don’t have to compare, removed the spaces, and made letters lowercase. I used a dictionary named tdict for t. I filled tdict that the letters in t are indices and the count of the letters are the entries. I created a dictionary named s_dict for each substring in s of length of t. Then I returned True if one of the s_dict and tdict are equal, or False.
+: First, return False for all cases that I don’t have to compare, remove the spaces, and made letters lowercase. I used a dictionary named tdict for t. I fill tdict that the letters in t are indices and the count of the letters are the entries. I created a dictionary named s_dict for each substring in s of length of t. Then return True if one of the s_dict and tdict are equal, or False.
+
 Length of s : n
 Length of t : m (can not be bigger than n)
 Efficiency(time)
@@ -10,3 +11,17 @@ question1 function runs 6 lines before the first for loop. O(6). Then it runs fo
 
 Efficiency(space)
  - I used one variable named sub_str_s, and two dictionaries. Length of tdict is m, and length of s_dict is n-m. So, O(1+m+n-m) = O(n)
+
+
+Question 2
+: Given a string a, find the longest palindromic substring contained in a. Your function definition should look like question2(a), and return a string.
+
+Answer 2
+: First, remove the spaces and made letters lowercase. Then I used for loop which has the length of a(n). Inside of the for loop, I made a function named longest_palindrome with parameter s, l, r to find the longest palindromic substring in string a. While statement in this function runs when l is same or bigger than 0, r is bigger than the length of a, and a[l] == a[r]. If the conditions are satisfied, the code subtract 1 from l and add 1 to r. This function returns a substring from l+1 to r after while statement. Check if palindrome center at i or between i and i+1, and return palindrome.
+
+Length of a : n
+Efficiency(time)
+question2 function runs 3 lines before the first for loop. O(3). Then it runs for loop which has length of a(n). O(3+n). Inside of for loop, there are 4 lines and they call function longest_palindrome 4 times. Function longest_palindrome runs maximum half of the length of a(n). O(3+n(4+4(n/2+1))) = O(2n^2+8n+3). So, worst case scenario is O(n^2)
+
+Efficiency(space)
+ - I used three variables named len1, len2 and palindrome. So O(3) = O(1).

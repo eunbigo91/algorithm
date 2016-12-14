@@ -49,30 +49,42 @@ print " "
 
 # Question 2
 
-def getlongestpalindrome(s, l, r):
-        while l >= 0 and r < len(s) and s[l] == s[r]:
-            l -= 1; r += 1
-        return s[l+1 : r]
+def longest_palindrome(a, l, r):
+    while l >= 0 and r < len(a) and a[l] == a[r]:
+        l -= 1
+        r += 1
+    return a[l+1 : r]
     
 def question2(a):
     a = a.replace(' ', '').lower()
-    if len(a) == 0:
-        print "Please put a string"
+    if len(a) == 0 or type(a) != str:
+        print "Please input a string"
         return None
     palindrome = ''
     for i in range(len(a)):
-        len1 = len(getlongestpalindrome(a, i, i))
+        # check palindrome centered at i
+        len1 = len(longest_palindrome(a, i, i))
+        print "len1 " + str(len1)
         if len1 > len(palindrome):
-            palindrome = getlongestpalindrome(a, i, i)
-            len2 = len(getlongestpalindrome(a, i, i + 1))
+            palindrome = longest_palindrome(a, i, i)
+            
+        # check palindrome centered between i and i+1
+        len2 = len(longest_palindrome(a, i, i + 1))
+        print "len2 " + str(len2)
         if len2 > len(palindrome):
-            palindrome = getlongestpalindrome(a, i, i + 1)
+            palindrome = longest_palindrome(a, i, i + 1)
     return palindrome
 
 
 print "Question 2"
-print question2('           ')
-print question2('mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm')
-print question2('This has no palindromes over two chars!')
-print question2('This has three character palindrome!')
+# Please input a string and None
+#print question2('           ')
+# mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm
+#print question2('mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm')
+# bab
+print question2('rpqbabqzcdd')
+# ara
+#print question2('This has three character palindrome!')
+# a
+#print question2('aabbccccdd')
 print " "
