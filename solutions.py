@@ -64,13 +64,11 @@ def question2(a):
     for i in range(len(a)):
         # check palindrome centered at i
         len1 = len(longest_palindrome(a, i, i))
-        print "len1 " + str(len1)
         if len1 > len(palindrome):
             palindrome = longest_palindrome(a, i, i)
             
         # check palindrome centered between i and i+1
         len2 = len(longest_palindrome(a, i, i + 1))
-        print "len2 " + str(len2)
         if len2 > len(palindrome):
             palindrome = longest_palindrome(a, i, i + 1)
     return palindrome
@@ -78,13 +76,13 @@ def question2(a):
 
 print "Question 2"
 # Please input a string and None
-#print question2('           ')
+print question2('           ')
 # mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm
-#print question2('mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm')
+print question2('mnbvcxzlkjhgfdsapoiuytrewqwertyuiopasdfghjklzxcvbnm')
 # bab
 print question2('rpqbabqzcdd')
 # ara
-#print question2('This has three character palindrome!')
+print question2('This has three character palindrome!')
 # a
-#print question2('aabbccccdd')
+print question2('aabbccccdd')
 print " "
